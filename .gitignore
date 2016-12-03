@@ -1,0 +1,6 @@
+# This file tells git to ignore certain files that are just byproducts and not
+# really needed to run the program.
+
+.DS_Store
+__pycache__
+db.sqlite3
