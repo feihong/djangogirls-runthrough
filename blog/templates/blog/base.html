@@ -14,12 +14,14 @@
     <a href="/">Django Girls Blog</a>
   </h1>
   <div class='spacer'></div>
+  {% if user.is_authenticated %}
   <a href="{% url 'post_new' %}" class='top-menu' title='New post'>
     <span class="glyphicon glyphicon-plus"></span>
   </a>
-  <a href="{% url 'post_new' %}" class='top-menu' title='Log out'>
+  <a href="{% url 'logout' %}" class='top-menu' title='Log out'>
     <span class="glyphicon glyphicon-log-out"></span>
   </a>
+  {% endif %}
 </div>
 
 <div class="container">
