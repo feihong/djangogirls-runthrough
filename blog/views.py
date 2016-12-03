@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout as django_logout
 from .models import Post
 from .forms import PostForm
@@ -20,6 +21,7 @@ def post_detail(request, pk):
     return render(request, 'blog/post_detail.html', {'post': post})
 
 
+@login_required
 def post_new(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
@@ -35,6 +37,7 @@ def post_new(request):
     return render(request, 'blog/post_edit.html', {'form': form, 'mode': 'New'})
 
 
+@login_required
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == 'POST':
@@ -50,6 +53,7 @@ def post_edit(request, pk):
     return render(request, 'blog/post_edit.html', {'form': form, 'mode': 'Edit'})
 
 
+@login_required
 def post_delete(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == 'POST':
