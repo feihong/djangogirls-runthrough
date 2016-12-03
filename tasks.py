@@ -2,14 +2,15 @@
 This file contains some shortcuts for running programs on the command line.
 
 """
+import subprocess
 from invoke import task
 
 
 @task
 def serve(ctx):
-    ctx.run('python manage.py runserver')
+    subprocess.call('python manage.py runserver', shell=True)
 
 
-# @task
-# def shell(ctx):
-#     ctx.run('python manage.py shell', pty=True)
+@task
+def shell(ctx):
+    subprocess.call('python manage.py shell', shell=True)
